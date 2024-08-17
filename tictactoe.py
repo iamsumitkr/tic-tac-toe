@@ -21,13 +21,23 @@ def player(board):
     """
     Returns player who has the next turn on a board.
     """
-    cntX = sum(row.count(X) for row in board)
-    cntO = sum(row.count(O) for row in board)
-    
-    if cntX > cntO:
-        return O
+
+    cntX = 0
+    cntO = 0
+    if not terminal(board):
+        for i in range(len(board)):
+            for j in range(len(board[i])):
+                if board[i][j] == "X":
+                    cntX += 1
+                elif board[i][j] == "O":
+                    cntO += 1
+        
+        if cntX > cntO:
+            return "O"
+        else:
+            return "O"
     else:
-        return X
+        return "X"
 
 def actions(board):
     """
